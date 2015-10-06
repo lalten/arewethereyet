@@ -52,7 +52,7 @@ int main(int argc, char *argv[])
     while(ifs.is_open())
     {
         getline(ifs, line);
-        cout << line << endl;
+        // cout << line << endl;
 
 
         // If end of file reached, clear the EOF to continue reading
