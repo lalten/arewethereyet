@@ -52,13 +52,16 @@ int main(int argc, char *argv[])
     while(ifs.is_open())
     {
         getline(ifs, line);
-        //cout << line << endl;
+        cout << line << endl;
 
 
         // If end of file reached, clear the EOF to continue reading
         if (ifs.eof())
         {
             ifs.clear();
+
+            // Don't use 100% CPU
+            this_thread::sleep_for(chrono::milliseconds(20));
         }
         // If we "are there", finish up
         else if(line.find(searchstr) != string::npos)
@@ -81,10 +84,9 @@ int main(int argc, char *argv[])
             return RETURN_TIMEOUT;
         }
 
-        // Don't use 100% CPU
-        this_thread::sleep_for(chrono::milliseconds(20));
     }
 
     cerr << "file was closed" << endl;
     return RETURN_ERR;
 }
+
